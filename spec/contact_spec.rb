@@ -1,5 +1,8 @@
 require('rspec')
 require('contact')
+require('email')
+require('phone')
+require('address')
 
 describe(Contact) do
   before() do
@@ -56,6 +59,39 @@ describe(Contact) do
   end
 
   describe('.find') do
-    
+    it('returns the contact that matches the id in the contact array') do
+      test_contact = Contact.new({:first => "John", :last => "Smith", :job => "Ruby Developer", :company => "Epicodus"})
+      test_contact.save()
+      test_contact2 = Contact.new({:first => "Robert", :last => "Smith", :job => "Ruby on Rails Developer", :company => "Company"})
+      test_contact2.save()
+      expect(Contact.find(test_contact2.id())).to(eq(test_contact2))
+    end
+  end
+
+  describe('#add_phone') do
+    it("adds a new phone to a contact") do
+      contact1 = Contact.new({:first => "John", :last => "Smith", :job => "Ruby Developer", :company => "Epicodus"})
+      phone1 = Phone.new({:area_code => 123, :number => 4567890, :type => "cell"})
+      contact1.add_phone(phone1)
+      expect(contact1.phones()).to(eq([phone1]))
+    end
+  end
+
+  describe('#add_email') do
+    it("adds a new email to a contact") do
+      contact1 = Contact.new({:first => "John", :last => "Smith", :job => "Ruby Developer", :company => "Epicodus"})
+      email1 = Email.new({:address => "person@example.com", :type => "home"})
+      contact1.add_email(email1)
+      expect(contact1.emails()).to(eq([email1]))
+    end
+  end
+
+  describe('#add_address') do
+    it("adds a new address to a contact") do
+      contact1 = Contact.new({:first => "John", :last => "Smith", :job => "Ruby Developer", :company => "Epicodus"})
+      address1 = Address.new({:street => "828 NE 69th Ave", :city => "Portland", :state => "Oregon", :zip => 97213})
+      contact1.add_address(address1)
+      expect(contact1.addresses()).to(eq([address1]))
+    end
   end
 end
