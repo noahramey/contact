@@ -2,6 +2,6 @@
 
 <div class="list-group">
   <% @contacts.each() do |contact| %>
-    <a class="list-group-item" href="/contacts/<%= contact.id() %>"><%= contact.first() contact.last() %></a>
+    <a class="list-group-item" href="/contacts/<%= contact.id() %>"><%= contact.first() %> <%= contact.last() %></a>
   <% end %>
 </div>
