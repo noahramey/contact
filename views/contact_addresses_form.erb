@@ -1,4 +1,4 @@
-<h1>Add a phone number to <%= @contact.name() %></h1>
+<h1>Add an address to contact: <%= @contact.first() %> <%= @contact.last() %></h1>
 
 <form action="/addresses" method="post">
   <input type="hidden" id="contact_id" name="contact_id" value="<%= @contact.id() %>">

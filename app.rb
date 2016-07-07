@@ -43,30 +43,30 @@ post('/phones') do
   @contact = Contact.find(params.fetch('contact_id').to_i())
   @contact.add_phone(@phone)
   erb(:phone_success)
+end
 
-  get('/contacts/:id/emails/new') do
-    @contact = Contact.find(params.fetch('id').to_i())
-    erb(:contact_phones_form)
-  end
+get('/contacts/:id/emails/new') do
+  @contact = Contact.find(params.fetch('id').to_i())
+  erb(:contact_emails_form)
+end
 
-  post('/emails') do
-    @email = Email.new({:address => params.fetch('address'), :type => params.fetch('type')})
-    @email.save()
-    @contact = Contact.find(params.fetch('contact_id').to_i())
-    @contact.add_email(@email)
-    erb(:email_success)
-  end
+post('/emails') do
+  @email = Email.new({:address => params.fetch('address'), :type => params.fetch('type')})
+  @email.save()
+  @contact = Contact.find(params.fetch('contact_id').to_i())
+  @contact.add_email(@email)
+  erb(:email_success)
+end
 
-  get('/contacts/:id/addresses/new') do
-    @contact = Contact.find(params.fetch('id').to_i())
-    erb(:contact_addresses_form)
-  end
+get('/contacts/:id/addresses/new') do
+  @contact = Contact.find(params.fetch('id').to_i())
+  erb(:contact_addresses_form)
+end
 
-  post('/addresses') do
-    @address = Address.new({:street => params.fetch('street'), :city => params.fetch('city'), :state => params.fetch('state'), :zip => params.fetch('zip'), :type => params.fetch('type')})
-    @address.save()
-    @contact = Contact.find(params.fetch('contact_id').to_i())
-    @contact.add_address(@address)
-    erb(:address_success)
-  end
+post('/addresses') do
+  @address = Address.new({:street => params.fetch('street'), :city => params.fetch('city'), :state => params.fetch('state'), :zip => params.fetch('zip'), :type => params.fetch('type')})
+  @address.save()
+  @contact = Contact.find(params.fetch('contact_id').to_i())
+  @contact.add_address(@address)
+  erb(:address_success)
 end

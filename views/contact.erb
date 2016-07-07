@@ -1,23 +1,23 @@
-<h2><%= contact.first() %> <%= contact.last() %></h2>
+<h2><%= @contact.first() %> <%= @contact.last() %></h2>
 
 <ul class="list-group">
-  <li class="list-group-item"><%= contact.job() %></li>
-  <li class="list-group-item"><%= contact.company() %></li>
+  <li class="list-group-item">Job: <%= @contact.job() %></li>
+  <li class="list-group-item">Company: <%= @contact.company() %></li>
 
-  <% @contacts.phones().each() do |phone| %>
-    <li class="list-group-item"><%= phone.type() %>: (<%= phone.area_code() %>) <%= phone.number() %></li>
+  <% @contact.phones().each() do |phone| %>
+    <li class="list-group-item"><%= phone.type() %> phone: (<%= phone.area_code() %>) <%= phone.number() %></li>
   <% end %>
 
-  <% @contacts.emails().each() do |email| %>
-    <li class="list-group-item"><%= email.type() %>: <%= email.address() %></li>
+  <% @contact.emails().each() do |email| %>
+    <li class="list-group-item"><%= email.type() %> email: <%= email.address() %></li>
   <% end %>
 
-  <% @contacts.addresses().each() do |address| %>
-    <li class="list-group-item"><%= address.type() %>: <%= address.street() %>, <%= address.city() %>, <%= address.state() %>, <%= address.zip() %></li>
+  <% @contact.addresses().each() do |address| %>
+    <li class="list-group-item"><%= address.type() %> address: <%= address.street() %>, <%= address.city() %>, <%= address.state() %>, <%= address.zip() %></li>
   <% end %>
 </ul>
 
-<a href="/contacts/<%= @contacts.id%>/phones/new" class="btn btn-md btn-success">Add a new phone number</a>
-<a href="/contacts/<%= @contacts.id%>/emails/new" class="btn btn-md btn-info">Add a new email address</a>
-<a href="/contacts/<%= @contacts.id%>/addresses/new" class="btn btn-md btn-warning">Add a new street address</a>
+<a href="/contacts/<%= @contact.id%>/phones/new" class="btn btn-md btn-success">Add a new phone number</a>
+<a href="/contacts/<%= @contact.id%>/emails/new" class="btn btn-md btn-info">Add a new email address</a>
+<a href="/contacts/<%= @contact.id%>/addresses/new" class="btn btn-md btn-warning">Add a new street address</a>
 <a href="/" class="btn btn-md btn-primary">Return to Home Page</a>
