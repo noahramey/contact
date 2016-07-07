@@ -89,7 +89,7 @@ describe(Contact) do
   describe('#add_address') do
     it("adds a new address to a contact") do
       contact1 = Contact.new({:first => "John", :last => "Smith", :job => "Ruby Developer", :company => "Epicodus"})
-      address1 = Address.new({:street => "828 NE 69th Ave", :city => "Portland", :state => "Oregon", :zip => 97213})
+      address1 = Address.new({:street => "828 NE 69th Ave", :city => "Portland", :state => "Oregon", :zip => 97213, :type => "home"})
       contact1.add_address(address1)
       expect(contact1.addresses()).to(eq([address1]))
     end
